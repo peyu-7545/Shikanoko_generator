@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>のこたんジェネレーター</title>
+    <title>しかのこジェネレーター</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -83,13 +83,20 @@
         .copy-button:hover {
             background-color: #cc7a00;
         }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>のこたんジェネレーター</h1>
+        <h1>しかのこジェネレーター</h1>
         <input type="text" id="inputText" placeholder="文字列を入力してください" />
-        <button id="convertButton">しかのこに変換</button>
+        <div class="action-buttons">
+            <button id="encryptButton">暗号化</button>
+            <button id="decryptButton">復元</button>
+        </div>
         <div class="output-container">
             <textarea id="output" readonly></textarea>
             <button class="copy-button" id="copyButton">コピー</button>
@@ -103,7 +110,14 @@
             "3": "こし",
             "4": "たん"
         };
-        document.getElementById("convertButton").addEventListener("click", function() {
+        const wordToNumber = {
+            "ぬん": "0",
+            "しか": "1",
+            "のこ": "2",
+            "こし": "3",
+            "たん": "4"
+        };
+        document.getElementById("encryptButton").addEventListener("click", function() {
             const inputText = document.getElementById("inputText").value;
             let result = [];
             for (let char of inputText) {
@@ -114,6 +128,33 @@
             }
             document.getElementById("output").value = result.join(' ');
         });
+        document.getElementById("decryptButton").addEventListener("click", function() {
+            const inputText = document.getElementById("inputText").value;
+            let words = inputText.split(' ');
+            let result = [];
+            words.forEach(word => {
+                let i = 0;
+                let base5 = '';
+                while (i < word.length) {
+                    let pair = word.slice(i, i + 2);
+                    if (wordToNumber[pair]) {
+                        base5 += wordToNumber[pair];
+                    }
+                    i += 2;
+                }
+                let ascii = parseInt(base5, 5);
+                if (!isNaN(ascii)) {
+                    result.push(String.fromCharCode(ascii));
+                }
+            });
+            const restoredText = result.join('');
+            document.getElementById("output").value = restoredText;
+        });
+        document.getElementById("copyButton").addEventListener("click", function() {
+            const outputText = document.getElementById("output");
+            outputText.select();
+            document.execCommand("copy");
+        });
         function convertToBase5(number) {
             let result = '';
             while (number > 0) {
@@ -122,11 +163,6 @@
             }
             return result || '0';
         }
-        document.getElementById("copyButton").addEventListener("click", function() {
-            const outputText = document.getElementById("output");
-            outputText.select();
-            document.execCommand("copy");
-        });
     </script>
 </body>
 </html>
