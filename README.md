@@ -7,6 +7,6 @@
 返還後の文字列はコピーできます。
 
 ## link
-https://peyu-7545.github.io/Shikanoko_generator
-https://peyu-7545.github.io/Shikanoko_generator/あいうえお
+https://peyu-7545.github.io/Shikanoko_generator<br>
+https://peyu-7545.github.io/Shikanoko_generator/あいうえお<br>
 https://peyu-7545.github.io/Shikanoko_generator/あぁアァｱｧ
