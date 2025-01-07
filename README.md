@@ -5,12 +5,8 @@
 <h2>復元</h2>
 入力欄に暗号を入力し、復元ボタンを押してください。<br>
 返還後の文字列はコピーできます。
-<h1>暗号のシステム</h1>
-<h2>暗号化</h2>
-①入力されたテキストをASCIIに変換<br>
-②ASCIIを5進数に変換<br>
-③5進数のそれぞれの数字を<br>
-ぬん/しか/のこ/こし/たん<br>
-に変換して出力
-<h2>復元</h2>
-暗号化の逆手順で変換し、出力
+
+## link
+https://peyu-7545.github.io/Shikanoko_generator
+https://peyu-7545.github.io/Shikanoko_generator/あいうえお
+https://peyu-7545.github.io/Shikanoko_generator/あぁアァｱｧ
